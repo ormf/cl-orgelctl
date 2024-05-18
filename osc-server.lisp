@@ -44,6 +44,19 @@
 (defparameter *pd-out-host* "127.0.0.1")
 (defparameter *pd-out-port* 3010)
 
+(defparameter *osc-responder-registry*
+  (make-array *orgelcount*
+              :initial-contents (loop
+                                  for i below *orgelcount*
+                                  collect (make-instance 'orgel-registry))))
+#|
+(loop for target in *orgel-global-targets*
+collect `(setf (,(read-from-string (format nil "orgel-registry-~a" target)) (aref *orgel-responder-registry* orgelidx)) nil))
+
+|#
+
+;;; The funcalls are spelled out for speed. Too lazy to do it with a macro...
+
 (defun start-lisp-server ()
   (format t "~&starting lisp server...")
   (when *oscin-lisp-server*
