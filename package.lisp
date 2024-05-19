@@ -7,4 +7,5 @@
 ;; ;;; #:orgel-meters
 ;;                           #:orgel-main #:orgel-bias-bw #:orgel-bias-pos #:start-orgel-gui)
 
+  (:export #:ndb-slider->amp #:amp->ndb-slider)
   )
